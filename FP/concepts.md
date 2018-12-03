@@ -34,14 +34,12 @@ defmodule Todos do
   end
   
   def to_s(todos) do
-        IO.puts "## Our Todos ##"
-        IO.puts "###############"
-        Enum.each(todos, fn todo ->
-          IO.puts "[#{if Todo.complete?(todo), do: 'x', else: ' '}] #{todo.description}"
-        end)
-      
-        IO.puts "###############"
-    end
+    IO.puts "## Our Todos ##"
+    IO.puts "###############"
+    Enum.each(todos, fn todo ->
+      IO.puts "[#{if Todo.complete?(todo), do: 'x', else: ' '}] #{todo.description}"
+    end)
+    IO.puts "###############"
   end
 end
 ```
@@ -52,8 +50,8 @@ And our Todo is very simple:
 defmodule Todo do
   def new(description) do
   	%{
-        description: description,
-        is_complete: false
+      description: description,
+      is_complete: false
   	}
   end
   
@@ -93,8 +91,8 @@ end
 defmodule Todo do
   def new(description) do
   	%{
-        description: description,
-        is_complete: false
+      description: description,
+      is_complete: false
   	}
   end
   
