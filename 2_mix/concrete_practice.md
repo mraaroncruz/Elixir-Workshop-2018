@@ -25,7 +25,7 @@ https://github.com/edgurgel/httpoison
 
 
 
-### HTML Parser (folk)
+### HTML Parser (floki)
 
 We'll be parsing some HTML. Instead of doing something CRAZY like using regexp's, we'll grab a dependency from github that gives us a really nice API to dig into our documents.
 
