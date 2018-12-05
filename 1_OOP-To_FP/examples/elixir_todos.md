@@ -1,16 +1,3 @@
-## The concepts here
-
-- Immutability
-- Modules modify data
-
-
-
-In Elixir you work in modules. Modules are collections of related functions that act on data.
-
-So let's say you have a todo list.
-
-
-
 ## Elixir Todos
 
 Elixir modules are just a grouping of related behaviour that manipulates data.
@@ -137,4 +124,3 @@ defmodule Todos do
   end
 end
 ```
-
