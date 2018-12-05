@@ -243,3 +243,7 @@ iex(6)> Weather.celsius_to_fahrenheit(20)
 68.0
 ```
 We'll be covering modules extensively in the next section.
+
+----------------
+
+#### [More >>](./2_getting_started.md)

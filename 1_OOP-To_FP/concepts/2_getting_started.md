@@ -46,3 +46,8 @@ iex(1)> :math.pi
 iex(2)> :erlang.time
 {19, 41, 20}
 ```
+
+------------------
+
+####[More >>](./3_the_rest.md)
+

@@ -178,3 +178,7 @@ h ModuleName.function
 # to introspect a variable, e.g., i "hello"
 i variable
 ```
+
+-----------------
+
+#### [What we learned >>](../conclusions.md)

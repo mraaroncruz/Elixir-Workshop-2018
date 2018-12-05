@@ -1,4 +1,4 @@
-## Exercise
+## Exercise (10 mins)
 
 **Write a todo list in your desired OOP programming language**
 
@@ -19,3 +19,7 @@
 `all()` return all underlying todos
 
 `to_s()` print all todos and their complete state in a nice way
+
+
+
+#### [More concepts >>](./concepts/index.md)
