@@ -42,16 +42,16 @@ These files will have modules named:
 - Elixir's standard library has a URI module with a `parse/1` function
 
 ```elixir
-iex(2)> URI.parse("https://google.com/analytics")
+iex(5)> URI.parse("https://aaron:password@google.com/analytics?username=bob#info")
 %URI{
-  authority: "google.com",
-  fragment: nil,
+  authority: "aaron:password@google.com",
+  fragment: "info",
   host: "google.com",
   path: "/analytics",
   port: 443,
-  query: nil,
+  query: "username=bob",
   scheme: "https",
-  userinfo: nil
+  userinfo: "aaron:password"
 }
 ```
 
