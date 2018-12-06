@@ -10,6 +10,10 @@ It will take a seed url and scrape the content and the links from the page and k
 
 `start(seed_url)` - Starts spidering the WWW
 
+`Links.Spider` should start in its own process (so it doesn't block when running)
+
+Links are added to `Links.List` as they are found.
+
 ---
 
 - the links should be held in the `Links.List` and be queriable
