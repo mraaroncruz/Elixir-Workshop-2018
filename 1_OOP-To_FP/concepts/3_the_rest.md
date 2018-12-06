@@ -179,6 +179,3 @@ h ModuleName.function
 i variable
 ```
 
------------------
-
-#### [What we learned >>](../conclusions.md)
