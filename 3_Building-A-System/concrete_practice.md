@@ -2,8 +2,6 @@
 
 We'll be building a system of a few files that rely on each other. We'll use the mix project from the previous section.
 
-
-
 ### Project Namespacing
 
 The convention in Elixir is to namespace your modules by folder names. But namespaces don't actually mean anything.
@@ -19,15 +17,11 @@ A namespace is just an Elixir atom. It is completely arbitrary. But we like good
 │   └── links.ex
 ```
 
-
-
 These files will have modules named:
 
 - `Links.Fetcher`
 - `Links.Parser`
 - `Links.Runner`
-
-
 
 ### The API
 
@@ -41,16 +35,13 @@ These files will have modules named:
 
 `Links.Runner`
 
-* `scrape/1` - takes a url string and returns a list of urls that belong to the TLD of the url that was your argument
-
-
+- `scrape/1` - takes a url string and returns a list of urls that belong to the host of the url that was your argument
 
 ### Hints
 
 - Elixir's standard library has a URI module with a `parse/1` function
 - The standard library `Enum` module can do most things you need to do with lists (mapping, reducing, filtering, splitting, etc.) Google it!
 
--------------------
+---
 
 #### [Conclusions >>](./conclusions.md)
-
