@@ -2,17 +2,16 @@
 
 We need to hold the state for our parsed links.
 
-Create a `LinkList` and keep the list of links there.
+Create a `Links.List` and keep the list of links there.
 
 ### API
 
-`Link.List`
+`Links.List`
 
-`add/1` - Add link to the list.
+`add(pid, link)` - Add link to the list.
 
-`all/0` - Give back the entire list of links.
+`all(pid)` - Give back the entire list of links.
 
------------------
+---
 
 **Good luck!**
-
