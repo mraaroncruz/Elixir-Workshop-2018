@@ -40,6 +40,21 @@ These files will have modules named:
 ### Hints
 
 - Elixir's standard library has a URI module with a `parse/1` function
+
+```elixir
+iex(2)> URI.parse("https://google.com/analytics")
+%URI{
+  authority: "google.com",
+  fragment: nil,
+  host: "google.com",
+  path: "/analytics",
+  port: 443,
+  query: nil,
+  scheme: "https",
+  userinfo: nil
+}
+```
+
 - The standard library `Enum` module can do most things you need to do with lists (mapping, reducing, filtering, splitting, etc.) Google it!
 
 ---
