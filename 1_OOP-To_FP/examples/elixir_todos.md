@@ -9,17 +9,17 @@ defmodule Todos do
   # Just return a basic list. We don't have to care about the underlying data structure
   # It is an implementation detail
   def new, do: []
-  
+
   # You see here we pass in our todo list as the first argument
   def add(todos, description) do
-  	todo = Todo.new
+    todo = Todo.new
     [todo | todos]
   end
-  
+
   def remove(todos, todo) do
     Enum.reject(todos, fn t -> t == todo end)
   end
-  
+
   def to_s(todos) do
     IO.puts "## Our Todos ##"
     IO.puts "###############"
@@ -36,12 +36,12 @@ And our Todo is very simple:
 ```elixir
 defmodule Todo do
   def new(description) do
-  	%{
+    %{
       description: description,
       is_complete: false
-  	}
+    }
   end
-  
+
   def complete(todo)
     %{todo | is_complete: true }
   end
@@ -66,26 +66,22 @@ defmodule Todos do
 end
 ```
 
-
-
 ## Advantages
-
-
 
 ## Complete Example
 
 ```elixir
 defmodule Todo do
   def new(description) do
-  	%{
+    %{
       description: description,
       is_complete: false
-  	}
+    }
   end
-  
+
   def complete?(%{is_complete: is_complete}),
     do: is_complete
-  
+
   def complete(todo) do
     %{todo | is_complete: true }
   end
@@ -95,28 +91,28 @@ defmodule Todos do
   # Just return a basic list. We don't have to care about the underlying data structure
   # It is an implementation detail
   def new, do: []
-  
+
   # You see here we pass in our todo list as the first argument
   def add(todos, description) do
-  	todo = Todo.new(description)
+    todo = Todo.new(description)
     [todo | todos]
   end
-  
+
   def remove(todos, todo) do
     Enum.reject(todos, fn t -> t == todo end)
   end
-  
+
   def to_s(todos) do
     IO.puts "## Our Todos ##"
     IO.puts "###############"
-    
+
     Enum.each(todos, fn todo ->
       IO.puts "[#{if Todo.complete?(todo), do: 'x', else: ' '}] #{todo.description}"
     end)
-    
+
     IO.puts "###############"
   end
-  
+
   def complete(todos, complete_todo) do
     Enum.map(todos, fn todo ->
       if todo == complete_todo, do: Todo.complete(todo), else: todo
