@@ -6,21 +6,21 @@ Here's the API again:
 
 `Todo`
 
-`new(description)` Also sets `is_complete` to default of `false`
+`new(description)` Also sets `is_complete` to default of `false` => Returns a `Todo` base data structure (a map?)
 
-`complete()` returns new completed copy of todo
+`complete(todo)` returns new completed copy of todo
 
 
 
 `TodoList`
 
-`add(todo)` adds a todo to the todo list
+`add(list, odo)` adds a todo to the todo list
 
-`all()` return all underlying todos
+`all(list)` return all underlying todos
 
-`complete(todo)` updates the todo in the list as complete (**this will be the hard part**)
+`complete(list, todo)` updates the todo in the list as complete (**this will be the hard part**)
 
-`to_s()` print all todos and their complete state in a nice way
+`to_s(list)` print all todos and their complete state in a nice way
 
 -----------------
 
