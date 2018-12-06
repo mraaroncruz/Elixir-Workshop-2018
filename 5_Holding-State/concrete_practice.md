@@ -2,6 +2,17 @@
 
 We need to hold the state for our parsed links.
 
-SHOULD WE DO PARALLEL PROCESSING TOO?
+Create a `LinkList` and keep the list of links there.
 
-give a list of urls and process them in parallel?
+### API
+
+`Link.List`
+
+`add/1` - Add link to the list.
+
+`all/0` - Give back the entire list of links.
+
+-----------------
+
+**Good luck!**
+
