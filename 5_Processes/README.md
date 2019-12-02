@@ -22,5 +22,5 @@ You can run millions of them and they have a very small overhead. The BEAM sched
 
 ---------------------
 
-#### [The Actor Pattern >>](./concepts/index.md)
+#### [Learn more >>](./concepts/README.md)
 

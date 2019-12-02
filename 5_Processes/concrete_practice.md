@@ -14,4 +14,4 @@ Create a `Links.List` and keep the list of links there.
 
 ---
 
-**Good luck!**
+[What we learned >>](conclusions.md)
