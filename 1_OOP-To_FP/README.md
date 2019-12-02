@@ -22,5 +22,5 @@
 
 
 
-### [More >>](./concrete_practice.md)
+### [First exercise >>](./concrete_practice.md)
 

@@ -1,4 +1,4 @@
-# 2 Getting Started
+# 2 General Elixir Concepts
 The easiest way to get started is firing up `iex`, or *Interactive Elixir*, to experiment with code live in the Elixir shell. The code examples in this chapter were entered directly in iex and you are encouraged to follow along in your own session.
 
 ### Terminology
@@ -47,7 +47,27 @@ iex(2)> :erlang.time
 {19, 41, 20}
 ```
 
+## Debugging
+
+There is a built in debugger that gives you access to the runtime at the point at which you envoke it.
+
+```
+# to stop code and inspect values
+require IEx
+IEx.pry
+```
+
+```
+# to view documentation for modules and functions
+h ModuleName
+h ModuleName.function
+```
+
+```
+# to introspect a variable, e.g., i "hello"
+i variable
+```
 -----------------------
 
-#### [More >>](./3_the_rest.md)
+#### [To the exercise >>](./exercise.md)
 
