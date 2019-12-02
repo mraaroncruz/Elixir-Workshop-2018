@@ -40,4 +40,4 @@ to run a REPL but with all of your project files included and Supervisors starte
 
 
 
-### [To Exercises >>](./concrete_practice.md)
+### [To exercises >>](./concrete_practice.md)
