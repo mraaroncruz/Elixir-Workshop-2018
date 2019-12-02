@@ -4,13 +4,15 @@ Try an Elixir version of the OOP TodoList you just wrote.
 
 Here's the API again:
 
+------------
+
 `Todo`
 
 `new(description)` Also sets `is_complete` to default of `false` => Returns a `Todo` base data structure (a map?)
 
 `complete(todo)` returns new completed copy of todo
 
-
+---------------
 
 `TodoList`
 
