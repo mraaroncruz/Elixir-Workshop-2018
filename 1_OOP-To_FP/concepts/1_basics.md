@@ -112,7 +112,7 @@ delete/2          delete_first/2    drop/2            equal?/2
 fetch!/2          fetch/2           from_enum/1       get/3
 get_values/2      has_key?/2        keys/1            keyword?/1
 merge/2           merge/3           new/0             new/1
-new/2             pop/3             pop_first/3       put/3
+new/2             dequeue/3             pop_first/3       put/3
 put_new/3         split/2           take/2            update!/3
 update/4          values/1
 ```
@@ -120,6 +120,38 @@ update/4          values/1
 #### *Tip: tab-complete in `iex`*
 > Gratuitous use helps discover new functions and explore module APIs
 
+## Maps
+
+Maps are an implemenation of a Hash Map, a key value data type with near constant time lookup. They can be used to model more known data like a User or a Course, but they have no guarantees about the keys, whether they exist or if there are extra keys you don't know about (you can model more strict data types using a Struct with `defstruct`).
+
+```
+map = %{:a => 1, 2 => :b}
+map[:a] # 1
+%{} = %{a: => 1, 2 => :b}
+%{:a => a} = %{:a => 1, 2 => :b}
+a # 1
+```
+
+```
+n = 1
+map = %{n => :one}
+map[1] # :one
+```
+
+```
+map = %{a: 1, b: 2} # requires an all-atom key set
+map.a # 1
+```
+
+```
+users = [
+  john: %{name: "John", age: 27, languages: ["Erlang", "Ruby", "Elixir"]},
+  mary: %{name: "Mary", age: 29, languages: ["Elixir", "F#", "Clojure"]}
+]
+users[:john].age # 27
+users = put_in users[:john].age, 31
+users[:john].age # 31
+```
 
 ## Variables & Immutability
 Elixir is an immutable programming language. Any variables defined cannot be changed. While this imposes some design considerations, it is a vital part of Elixir's ability to write concurrent and robust applications. Variable assignment is referred to as *binding*, where a term is bound to a value. Here's a taste of some simple bindings:
@@ -242,8 +274,112 @@ iex(5)> Weather.high
 iex(6)> Weather.celsius_to_fahrenheit(20)
 68.0
 ```
-We'll be covering modules extensively in the next section.
+
+### Modules are buckets for behavior
+
+In OOP, a class is a container or blueprint for **behavior** *and* **state**.
+
+In Elixir, you separate these concepts into **data** *and* **functions**.
+
+A module is a collection of functions that operates on a type of data. The convention is that the first argument to the public facing functions is a *data type* and the functions return a manipulated copy of that data type and whichever other data you were expecting.
+
+For example if you have a `Queue` that when you `dequeue` something off of it, you would call the `dequeue/1` function of the `Queue` module and it would probably return a two tuple of `{item_popped, new_queue_with_item_removed}`
+
+#### JavaScript implementation
+
+```js
+class Queue {
+  constructor() {
+    this._queue = []
+  }
+  enqueue(item) {
+    this._queue.push(item)
+    return this._queue.length
+  }
+  dequeue() {
+    if (this._queue.length === 0) {
+      return null
+    }
+
+    return this._queue.shift()
+  }
+  peek() {
+    return this._queue
+  }
+}
+
+const q = new Queue()
+q.enqueue("foo")
+// 1
+q.enqueue("bar")
+// 2
+q.dequeue()
+// "foo"
+q.peek()
+// ["bar"]
+```
+
+#### Elixir implementation
+```elixir
+defmodule Queue do
+  def new() do
+    []
+  end
+
+  def enqueue(queue, item) do
+    [item | queue]
+  end
+
+  def dequeue(queue) do
+    [item | rest] = Enum.reverse(queue)
+    {item, Enum.reverse(rest)}
+  end
+
+  def peek(queue), do: Enum.reverse(queue)
+end
+
+q = Queue.new()
+# []
+
+q = Queue.enqueue(q, "foo")
+# ["foo"]
+
+q = Queue.enqueue(q, "bar")
+# ["bar", "foo"]
+
+{item, q} = Queue.dequeue(q)
+# {"foo", ["bar"]}
+item
+# "foo"
+
+Queue.peek(q)
+# ["bar"]
+```
+
+You are always getting a copy of the data structure you are working with, making parallel access easier to reason about.
+
+This concept can take a bit of time to get used to, but I have found that I write less buggy code when following these rules.
+
+
+## Pipe Operator
+
+The pipe operator is a really nice feature that allows you to create pipelines of data manipulation where the return value of the last expression is sent in as the first argument to the next.
+
+```
+odd? = fn n -> rem(n, 2) != 0 end
+1..100_000
+|> Enum.map(&(&1 * 3))
+|> Enum.filter(odd?)
+|> Enum.sum
+```
+
+```
+Enum.take(Stream.cycle([1,2,3]), 10)
+|> Enum.filter(odd?)
+```
+
+Everyone loves the pipe operator :D
 
 ----------------
 
-#### [More >>](./2_getting_started.md)
+#### [General concepts >>](./2_general_concepts.md)
