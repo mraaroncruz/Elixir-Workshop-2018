@@ -13,3 +13,7 @@ Open up iex and start matching.
   ```
 
 - That's it. Fiddle with it!
+
+----
+
+[What we learned >>](./conclusions.md)
