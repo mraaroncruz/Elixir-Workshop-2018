@@ -1,4 +1,5 @@
-# Elixir-Workshop-2018
-Workshop at FH Salzburg 6/12/2018
+# Elixir Workshop FH Salzburg
 
-[Link to Gitter Chat](https://gitter.im/Elixir-Workshop-2018/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link)
+- [Link to Gitter Chat ⌨️](https://gitter.im/Elixir-FH-Salzburg-2019/Lobby)
+
+- [Start Workshop 👉](./1_OOP-To_FP/README.md)
