@@ -10,7 +10,7 @@
 
 `complete()` sets todo to complete
 
-
+----------------
 
 `TodoList`
 
@@ -20,6 +20,6 @@
 
 `to_s()` print all todos and their complete state in a nice way
 
-
+-----------
 
 #### [More concepts >>](./concepts/README.md)
