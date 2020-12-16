@@ -4,7 +4,7 @@ Try an Elixir version of the OOP TodoList you just wrote.
 
 Here's the API again:
 
-------------
+---
 
 `Todo`
 
@@ -12,11 +12,11 @@ Here's the API again:
 
 `complete(todo)` returns new completed copy of todo
 
----------------
+---
 
 `TodoList`
 
-`add(list, odo)` adds a todo to the todo list
+`add(list, todo)` adds a todo to the todo list
 
 `all(list)` return all underlying todos
 
@@ -24,8 +24,6 @@ Here's the API again:
 
 `to_s(list)` print all todos and their complete state in a nice way
 
------------------
-
-
+---
 
 #### [What we learned >>](../conclusions.md)

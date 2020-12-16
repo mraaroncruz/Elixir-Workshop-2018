@@ -1,6 +1,7 @@
 # The Basics
 
 ## Types
+
 Elixir is dynamically typed and contains a small, but powerful set of types including:
 
 - Integer
@@ -12,8 +13,8 @@ Elixir is dynamically typed and contains a small, but powerful set of types incl
 - Pid
 
 ### Atoms
-*Atoms* are constants with a name and synonymous with symbols in languages such as Ruby. Atoms are prefixed by a semicolon, such as `:ok` and are a fundamental utility in Elixir. Atoms are used for powerful *pattern matching* techniques, as well as a simple, yet effective way to describe data and return values. Internally, Elixir programs are represented by an AST (Abstract Syntax Tree) comprised of atoms and metadata.
 
+_Atoms_ are constants with a name and synonymous with symbols in languages such as Ruby. Atoms are prefixed by a semicolon, such as `:ok` and are a fundamental utility in Elixir. Atoms are used for powerful _pattern matching_ techniques, as well as a simple, yet effective way to describe data and return values. Internally, Elixir programs are represented by an AST (Abstract Syntax Tree) comprised of atoms and metadata.
 
 ```elixir
 iex> is_atom :ok
@@ -21,8 +22,8 @@ true
 ```
 
 ### Tuples
-*Tuples* are arrays of fixed length, stored contiguously in memory, which can hold any combination of Elixir types. Unlike Erlang, tuples in Elixir are indexed starting at zero.
 
+_Tuples_ are arrays of fixed length, stored contiguously in memory, which can hold any combination of Elixir types. Unlike Erlang, tuples in Elixir are indexed starting at zero.
 
 ```elixir
 iex(3)> ids = {1, 2, 3}
@@ -36,10 +37,11 @@ iex(6)> elem ids, 1
 ```
 
 ### Lists
-*Lists* are linked-lists containing a variable number of terms. Like tuples, lists can hold any combination of types. Element lookup is `O(N)`, but like most functional languages, composing lists as a head and tail is highly optimized. The `head` of the list is the first element, with the `tail` containing the remaining set. This syntax is denoted by `[h|t]` and can be used to show a list entirely as a series of linked lists. For example:
+
+_Lists_ are linked-lists containing a variable number of terms. Like tuples, lists can hold any combination of types. Element lookup is `O(N)`, but like most functional languages, composing lists as a head and tail is highly optimized. The `head` of the list is the first element, with the `tail` containing the remaining set. This syntax is denoted by `[h|t]` and can be used to show a list entirely as a series of linked lists. For example:
 
 ```elixir
-iex(1)> list = [1, 2 ,3]
+iex(1)> list = [1, 2, 3]
 [1, 2, 3]
 iex(2)> [ 1 | [2, 3] ] == list
 true
@@ -49,17 +51,17 @@ iex(4)> hd list
 1
 iex(5)> tl list
 [2, 3]
-iex(6)> [head|tail] = list
+iex(6)> [head | tail] = list
 [1, 2, 3]
 iex(7)> head
 1
 iex(8)> tail
 [2, 3]
-iex(9)> h Enum.at
+iex(9)> h(Enum.at)
 
       def at(collection, n, default // nil)
 
-Finds the element at the given index (zero-based). 
+Finds the element at the given index (zero-based).
 Returns default if index is out of bounds.
 
 Examples
@@ -79,12 +81,13 @@ iex(11)> Enum.reverse list
 [3, 2, 1]
 ```
 
-#### *Tip: iex "h" helper function*
+#### _Tip: iex "h" helper function_
+
 > Use `h` followed by a Module name or Module function name to call up markdown formatted documentation as seen in the ninth iex entry of the previous example.
 
-
 ### Keyword Lists
-*Keyword Lists* provide syntactic sugar for using a list to represent a series of key-value pairs. Internally, the key-value pairs are simply a list of tuples containing two terms, an atom and value. Keyword lists are convenient for small sets of data where true hash or map based lookup performance is not a concern.
+
+_Keyword Lists_ provide syntactic sugar for using a list to represent a series of key-value pairs. Internally, the key-value pairs are simply a list of tuples containing two terms, an atom and value. Keyword lists are convenient for small sets of data where true hash or map based lookup performance is not a concern.
 
 ```elixir
 iex(2)> types = [atom: "Atom", tuple: "Tuple"]
@@ -117,7 +120,8 @@ put_new/3         split/2           take/2            update!/3
 update/4          values/1
 ```
 
-#### *Tip: tab-complete in `iex`*
+#### _Tip: tab-complete in `iex`_
+
 > Gratuitous use helps discover new functions and explore module APIs
 
 ## Maps
@@ -125,7 +129,7 @@ update/4          values/1
 Maps are an implemenation of a Hash Map, a key value data type with near constant time lookup. They can be used to model more known data like a User or a Course, but they have no guarantees about the keys, whether they exist or if there are extra keys you don't know about (you can model more strict data types using a Struct with `defstruct`).
 
 ```
-map = %{:a => 1, 2 => :b}
+map = %{a => 1, 2 => :b}
 map[:a] # 1
 %{} = %{a: => 1, 2 => :b}
 %{:a => a} = %{:a => 1, 2 => :b}
@@ -143,6 +147,12 @@ map = %{a: 1, b: 2} # requires an all-atom key set
 map.a # 1
 ```
 
+## With string keys
+
+```
+%{"height" => 100, "hair" => "green"}
+```
+
 ```
 users = [
   john: %{name: "John", age: 27, languages: ["Erlang", "Ruby", "Elixir"]},
@@ -154,9 +164,11 @@ users[:john].age # 31
 ```
 
 ## Variables & Immutability
-Elixir is an immutable programming language. Any variables defined cannot be changed. While this imposes some design considerations, it is a vital part of Elixir's ability to write concurrent and robust applications. Variable assignment is referred to as *binding*, where a term is bound to a value. Here's a taste of some simple bindings:
+
+Elixir is an immutable programming language. Any variables defined cannot be changed. While this imposes some design considerations, it is a vital part of Elixir's ability to write concurrent and robust applications. Variable assignment is referred to as _binding_, where a term is bound to a value. Here's a taste of some simple bindings:
 
 Binding Variables:
+
 ```elixir
 iex(1)> sum = 1 + 1
 2
@@ -170,9 +182,10 @@ iex(5)> rest
 ["bob", "ted"]
 ```
 
-While variables are immutable and can only be assigned once, Elixir allows us to rebind a variable to a new value. It is important to realize that this does *not* change the original variable. Any reference to the previous assignment maintains the original binding.
+While variables are immutable and can only be assigned once, Elixir allows us to rebind a variable to a new value. It is important to realize that this does _not_ change the original variable. Any reference to the previous assignment maintains the original binding.
 
 Rebinding Variables:
+
 ```elixir
 iex(1)> sum = 1 + 2
 3
@@ -187,9 +200,11 @@ iex(4)> initial_sum.()
 ```
 
 ## Anonymous Functions
+
 Along with variable binding, we just got our first taste of the anonymous function syntax. Anonymous functions can be defined with the `fn arg1, arg2 -> end` syntax and invoked with the explicit "dot notation." As you would expect from a functional language, functions in Elixir are first class citizens and can be passed around and invoked from other functions.
 
 First Class Functions:
+
 ```elixir
 iex(1)> add = fn num1, num2 ->
 ...(1)>   num1 + num2
@@ -216,8 +231,7 @@ iex(7)> perform_calculation.(5, 5, &(&1 * &2))
 25
 ```
 
-The last example shows Elixir's *shorthand function* syntax. The `&(&1 * &2)` is simply syntactic sugar for:
-
+The last example shows Elixir's _shorthand function_ syntax. The `&(&1 * &2)` is simply syntactic sugar for:
 
 ```elixir
 iex(7)> perform_calculation.(5, 5, fn a, b -> a * b end)
@@ -233,14 +247,16 @@ iex(2)> Enum.filter [1, "red", 2, "green"], &(is_number &1)
 [1, 2]
 ```
 
-#### *Warning: Use sparingly*
+#### _Warning: Use sparingly_
+
 > The shorthand syntax is nice and succinct, but it should be used only in cases when its meaning is obvious and your arguments few. Your code should strive for clarity over brevity, always.
 
 ## Captured Functions
 
-The shorthand example also showcased the syntax for *capturing* functions. Capturing is used for functions defined within modules, or *named functions* (Covered in the next section), where a function reference is needed instead of invocation. Both name and arity are required for function identification when capturing. 
+The shorthand example also showcased the syntax for _capturing_ functions. Capturing is used for functions defined within modules, or _named functions_ (Covered in the next section), where a function reference is needed instead of invocation. Both name and arity are required for function identification when capturing.
 
 Capturing named functions:
+
 ```elixir
 iex(2)> add = &Kernel.+/2
 &Kernel.+/2
@@ -252,8 +268,8 @@ iex(2)> Enum.reduce [1, 2, 3], 0, &Kernel.+/2
 
 When performing `1 + 2`, underneath Elixir is calling the named function `+`, defined and imported automatically from the `Kernel` module. Modules are the main building blocks of Elixir programs.
 
-
 ## Named Functions
+
 Named functions are functions defined within Modules. Named functions are similar to anonymous functions but the dot notation is not required for invocation.
 
 ```elixir
@@ -277,11 +293,11 @@ iex(6)> Weather.celsius_to_fahrenheit(20)
 
 ### Modules are buckets for behavior
 
-In OOP, a class is a container or blueprint for **behavior** *and* **state**.
+In OOP, a class is a container or blueprint for **behavior** _and_ **state**.
 
-In Elixir, you separate these concepts into **data** *and* **functions**.
+In Elixir, you separate these concepts into **data** _and_ **functions**.
 
-A module is a collection of functions that operates on a type of data. The convention is that the first argument to the public facing functions is a *data type* and the functions return a manipulated copy of that data type and whichever other data you were expecting.
+A module is a collection of functions that operates on a type of data. The convention is that the first argument to the public facing functions is a _data type_ and the functions return a manipulated copy of that data type and whichever other data you were expecting.
 
 For example if you have a `Queue` that when you `dequeue` something off of it, you would call the `dequeue/1` function of the `Queue` module and it would probably return a two tuple of `{item_popped, new_queue_with_item_removed}`
 
@@ -290,36 +306,37 @@ For example if you have a `Queue` that when you `dequeue` something off of it, y
 ```js
 class Queue {
   constructor() {
-    this._queue = []
+    this._queue = [];
   }
   enqueue(item) {
-    this._queue.push(item)
-    return this._queue.length
+    this._queue.push(item);
+    return this._queue.length;
   }
   dequeue() {
     if (this._queue.length === 0) {
-      return null
+      return null;
     }
 
-    return this._queue.shift()
+    return this._queue.shift();
   }
   peek() {
-    return this._queue
+    return this._queue;
   }
 }
 
-const q = new Queue()
-q.enqueue("foo")
+const q = new Queue();
+q.enqueue("foo");
 // 1
-q.enqueue("bar")
+q.enqueue("bar");
 // 2
-q.dequeue()
+q.dequeue();
 // "foo"
-q.peek()
+q.peek();
 // ["bar"]
 ```
 
 #### Elixir implementation
+
 ```elixir
 defmodule Queue do
   def new() do
@@ -360,7 +377,6 @@ You are always getting a copy of the data structure you are working with, making
 
 This concept can take a bit of time to get used to, but I have found that I write less buggy code when following these rules.
 
-
 ## Pipe Operator
 
 The pipe operator is a really nice feature that allows you to create pipelines of data manipulation where the return value of the last expression is sent in as the first argument to the next.
@@ -380,6 +396,6 @@ Enum.take(Stream.cycle([1,2,3]), 10)
 
 Everyone loves the pipe operator :D
 
-----------------
+---
 
-#### [General concepts >>](./2_general_concepts.md)
+#### [General concepts >>](./3_general_concepts.md)
